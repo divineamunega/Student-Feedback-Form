@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
-
+:root {
+	--toastify-color-progress-light: linear-gradient(to right, #4cd964, green);
+}
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Manrope", sans-serif;
-  text-decoration: none;
+	margin: 0;
+	padding: 0;
+	font-family: "Manrope", sans-serif;
+	text-decoration: none;
+	font-size: 64.5%;
+}
+
+.Toastify__toast {
+	font-size: 3.7rem;
+	color: black;
 }

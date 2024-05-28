@@ -1,79 +1,90 @@
+import styles from "./SignUp.module.css";
 import { useState } from "react";
-import styles from "./Login.module.css";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+	createUserWithEmailAndPassword,
+	updateProfile,
+	setPersistence,
+	browserLocalPersistence,
+} from "firebase/auth";
 import { auth } from "../firebase";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [title, setTitle] = useState("Sign Up");
-  const [isSignUpBtnactive, setIsSignUpBtnactive] = useState(true);
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const navigate = useNavigate();
 
-  function handleSignUpButton() {
-    setIsSignUpBtnactive(true);
-    setTitle("Sign Up");
-  }
+	async function signUp(e) {
+		e.preventDefault();
+		try {
+			if (email === "" || password === "" || name === "")
+				throw new Error("Please Fill all the required feilds.");
+			await createUserWithEmailAndPassword(auth, email, password);
+			await updateProfile(auth.currentUser, {
+				displayName: name,
+			});
+			await setPersistence(auth, browserLocalPersistence);
 
-  function signUp(e) {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => console.log(userCredentials))
-      .catch((e) => console.log(e));
-  }
+			toast.success("Account Created Successfully!");
+			navigate("/page");
+		} catch (err) {
+			toast.error(err.message);
+		} finally {
+			setName("");
+			setEmail("");
+			setPassword("");
+		}
+	}
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.formBox}>
-        <h1>{title}</h1>
-        <form onSubmit={signUp}>
-          <div className={styles.inputGroup}>
-            <div className={styles.inputField}>
-              <input
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className={styles.inputField}>
-              <input
-                type="email"
-                placeholder="Email"
-                className="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className={styles.inputField}>
-              <input
-                type="password"
-                placeholder="Password"
-                className="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <p>
-              Lost password <a href="#">Click Here!</a>
-            </p>
-          </div>
-          <div className={styles.btnField}>
-            <NavLink
-              to="/"
-              type="submit"
-              onClick={handleSignUpButton}
-              className={!isSignUpBtnactive ? styles.disable : ""}
-            >
-              Sign Up
-            </NavLink>
-            <NavLink to="/login">Sign In</NavLink>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+	return (
+		<>
+			<ToastContainer />
+			<form onSubmit={signUp} className={styles.formBox}>
+				<h1>Welcome!</h1>
+				<h2>Nice to have you here</h2>
+				<div className={styles.inputGroup}>
+					<div className={styles.inputField}>
+						<input
+							type="text"
+							placeholder="Name"
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+						/>
+					</div>
+					<div className={styles.inputField}>
+						<input
+							type="email"
+							placeholder="Email"
+							className="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+					<div className={styles.inputField}>
+						<input
+							type="password"
+							placeholder="Password"
+							className="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+					<p>
+						Already have an account <Link to="/auth/login">Sign In!</Link>
+					</p>
+				</div>
+				<div className={styles.btnField}>
+					<button type="submit" className={styles.actionBtn}>
+						Sign Up
+					</button>
+				</div>
+			</form>
+		</>
+	);
 }
 
 export default SignUp;
+// onClick = { handleSignUpButton };
