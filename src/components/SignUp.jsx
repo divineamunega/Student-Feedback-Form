@@ -65,7 +65,6 @@ function SignUp() {
               type="submit"
               onClick={handleSignUpButton}
               className={!isSignUpBtnactive ? styles.disable : ""}
-              onSubmit={signUp}
             >
               Sign Up
             </NavLink>

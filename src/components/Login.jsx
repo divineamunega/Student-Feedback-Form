@@ -5,11 +5,9 @@ import { auth } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignInBtnactive, setIsSignInBtnactive] = useState(false);
-  //   const [isSignUpBtnactive, setIsSignUpBtnactive] = useState(true);
 
   const navigate = useNavigate();
 
