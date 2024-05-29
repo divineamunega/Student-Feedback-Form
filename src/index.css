@@ -13,5 +13,9 @@
 
 .Toastify__toast {
 	font-size: 3.7rem;
-	color: black;
+	text-wrap: nowrap;
+}
+
+.Toastify__toast-container {
+	width: fit-content;
 }

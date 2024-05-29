@@ -41,7 +41,6 @@ function SignUp() {
 
 	return (
 		<>
-			<ToastContainer />
 			<form onSubmit={signUp} className={styles.formBox}>
 				<h1>Welcome!</h1>
 				<h2>Nice to have you here</h2>
