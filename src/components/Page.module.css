@@ -1,3 +1,52 @@
 .page {
-	font-size: 5rem;
+  font-size: 5rem;
+}
+
+.header {
+  height: 15vh;
+  background-color: #2980b9;
+  color: #3c00a0;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 0px 40px;
+
+  font-weight: bold;
+}
+
+.app{
+	height: 85vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #eee;
+}
+
+form{
+	width: 50%;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 15px 10px;
+  margin-bottom: 15px;
+  font-size: 1.7rem;
+  background-color: white;
+  border: 1px solid #2980b9;
+  color: #2980b9;
+}
+
+textarea{
+	min-height: 200px;
+}
+
+button {
+  width: 100%;
+  padding: 15px 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #3498db;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

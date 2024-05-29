@@ -64,22 +64,23 @@ form p a {
 .actionBtn {
 	font-size: 1.4rem;
 	width: 100%;
-	padding: 0.8rem 0;
-	border-radius: 1rem;
-	background-color: greenyellow;
+	padding: 1.3rem 0;
+	/* border-radius: 1rem; */
+	background-color: #3c00a0;
+	color: white;
 	outline: none;
-	border: 1px solid grey;
+	border: none;
 	margin-top: 2rem;
 	transition: 0.5s;
 	transform: scale(100%);
 }
 
 .actionBtn:not(:disabled):hover {
-	transition: 0.5s;
-	transform: scale(105%);
+	transition: 0.1s;
+	transform: scale(101%);
 }
 
-.actionBtn:not(:disabled):active {
+/* .actionBtn:not(:disabled):active {
 	transition: 0.5s;
 	transform: scale(95%);
-}
+} */

@@ -1,10 +1,13 @@
 .authPage {
-	background: url("https://plus.unsplash.com/premium_photo-1666724568420-e282bafa8d2c?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+	background: url("https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGVkdWNhdGlvbnxlbnwwfDB8MHx8fDA%3D");
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .authBox {
